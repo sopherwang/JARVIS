@@ -1,7 +1,7 @@
 openai:
-  key: your_personal_openai_key # required: gradio or your_personal_openai_key
+  key: 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 # required: gradio or your_personal_openai_key
 huggingface:
-  token: # required: huggingface token @ https://huggingface.co/settings/tokens
+  token: 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 # required: huggingface token @ https://huggingface.co/settings/tokens
 local: # ignore: just for development
   endpoint: http://localhost:8003
 dev: false
