@@ -162,8 +162,9 @@ def send_request(data):
         HEADER = {
             "Authorization": f"Bearer {data['openaikey']}"
         }
+    logger.debug(f"jiajun: before request data = {data}")
     response = requests.post(endpoint, json=data, headers=HEADER, proxies=PROXY)
-    logger.debug(response.text.strip())
+    logger.debug(f"jiajun: response = {response.text.strip()}")
     if use_completion:
         return response.json()["choices"][0]["text"].strip()
     else:
@@ -288,8 +289,9 @@ def parse_task(context, input, openaikey=None):
             break
         messages.pop()
         start += 2
-    
+
     logger.debug(messages)
+    logger.debug(f"jiajun: task_parsing_highlight_ids = {task_parsing_highlight_ids}")
     data = {
         "model": LLM,
         "messages": messages,
