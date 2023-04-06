@@ -870,16 +870,16 @@ def chat_huggingface(messages, openaikey = None):
         record_case(success=False, **{"input": input, "task": task_str, "reason": "task parsing fail", "op":"chitchat"})
         return {"message": response}
 
-    return {"message": tasks}
-
     tasks = unfold(tasks)
     tasks = fix_dep(tasks)
     logger.debug(tasks)
 
+    return {"message": tasks}
+
     results = {}
     processes = []
     tasks = tasks[:]
-    with  multiprocessing.Manager() as manager:
+    with multiprocessing.Manager() as manager:
         d = manager.dict()
         retry = 0
         while True:
