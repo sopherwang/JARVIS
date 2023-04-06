@@ -850,7 +850,8 @@ def chat_huggingface(messages, openaikey = None):
     context = messages[:-1]
     input = messages[-1]["content"]
     logger.info("*"*80)
-    logger.info(f"input: {input}")
+    logger.info(f"jiajun: context: {context}")
+    logger.info(f"jiajun: input: {input}")
 
     task_str = parse_task(context, input, openaikey).strip()
     logger.info(task_str)
@@ -866,7 +867,8 @@ def chat_huggingface(messages, openaikey = None):
         response = chitchat(messages, openaikey)
         record_case(success=False, **{"input": input, "task": task_str, "reason": "task parsing fail", "op":"chitchat"})
         return {"message": response}
-    
+
+    return {"message": tasks}
 
     tasks = unfold(tasks)
     tasks = fix_dep(tasks)
