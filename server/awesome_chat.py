@@ -93,14 +93,14 @@ HTTP_Server = "http://" + config["httpserver"]["host"] + ":" + str(config["https
 Model_Server = "http://" + config["modelserver"]["host"] + ":" + str(config["modelserver"]["port"])
 
 # check the HTTP_Server
-if inference_mode!="huggingface":
-    message = "The server of local inference endpoints is not running, please start it first. (or using `inference_mode: huggingface` in config.yaml for a feature-limited experience)"
-    try:
-        r = requests.get(Model_Server + "/running")
-        if r.status_code != 200:
-            raise ValueError(message)
-    except:
-        raise ValueError(message)
+# if inference_mode!="huggingface":
+#     message = "The server of local inference endpoints is not running, please start it first. (or using `inference_mode: huggingface` in config.yaml for a feature-limited experience)"
+#     try:
+#         r = requests.get(Model_Server + "/running")
+#         if r.status_code != 200:
+#             raise ValueError(message)
+#     except:
+#         raise ValueError(message)
 
 
 parse_task_demos_or_presteps = open(config["demos_or_presteps"]["parse_task"], "r").read()
